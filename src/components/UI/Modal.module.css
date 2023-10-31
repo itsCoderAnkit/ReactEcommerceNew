@@ -1,0 +1,23 @@
+.backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: 20;
+    background-color: rgba(255, 255, 255, 0.2); /* Adjust the background color and opacity */
+}
+
+.modal {
+    position: fixed;
+    top: 10vh;
+    margin:0 20px 0 0;
+    right: 1%; /* Shift to the right side */
+    width: 250px; /* Set the desired width */
+    background-color: rgb(100, 100, 100);
+    padding: 5px;
+    border-radius: 6px; /* For a rectangular appearance */
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.25);
+    z-index: 30;
+    animation: slide-down 300ms ease-out forwards;
+}
