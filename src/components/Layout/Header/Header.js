@@ -29,6 +29,9 @@ export default function Header(props) {
                 <li>
                   <NavLink activeClassName={styles.active} to="/contact">Contact Us</NavLink>
                 </li>
+                <li>
+                  <NavLink activeClassName={styles.active} to="/auth-form">Login</NavLink>
+                </li>
               </ul>
             </nav>
 

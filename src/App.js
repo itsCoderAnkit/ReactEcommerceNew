@@ -1,6 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import './App.css';
-import { Route, Switch } from 'react-router-dom'
+import { Route, Switch,Redirect } from 'react-router-dom'
 import Header from './components/Layout/Header/Header';
 import About from './components/Layout/Header/NavLinks/About';
 import Home from './components/Layout/Header/NavLinks/Home';
@@ -10,6 +10,8 @@ import AvailableProducts from './components/Products/AvailableProducts';
 import CartProvider from './components/Store/CartProvider';
 import ContactUs from './components/Layout/Header/NavLinks/ContactUs';
 import ProductDetails from './components/Layout/Header/NavLinks/ProductDetails';
+import AuthForm from './components/Auth/AuthForm';
+import AuthContext from './components/Store/AuthContext';
 
 
 
@@ -42,6 +44,7 @@ function App() {
     console.log(responseData)
   }
 
+const authCtx = useContext(AuthContext)
   return (
 
     <CartProvider>
@@ -60,7 +63,12 @@ function App() {
             <ContactUs userDetails={storeUserDetails} />
           </Route>
           <Route path='/store' exact>
-            <AvailableProducts />
+            {/* {authCtx.isLoggedIn && < AvailableProducts />}
+            {!authCtx.isLoggedIn && < Redirect to="auth-form"/>} */}
+            < AvailableProducts />
+          </Route>
+          <Route path='/auth-form' exact>
+            <AuthForm />
           </Route>
           <Route path='/productDetails/:productId' exact>
             <ProductDetails/>

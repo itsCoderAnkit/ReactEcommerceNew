@@ -2,6 +2,7 @@ import React from 'react'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import { useRef } from 'react';
+import Container from 'react-bootstrap/Container'
 
 
 function ContactUs(props) {
@@ -22,7 +23,8 @@ function ContactUs(props) {
     }
     return (
         <div>
-            <h1>CONTACT US PAGE</h1>
+            <h1>CONTACT US</h1>
+            <Container>
             <Form onSubmit={formSubmitHandler}>
                 <Form.Group className="mb-3" controlId="formBasicEmail">
                     <Form.Label>Name</Form.Label>
@@ -45,6 +47,7 @@ function ContactUs(props) {
                     Submit
                 </Button>
             </Form>
+            </Container>
         </div>
     )
 }

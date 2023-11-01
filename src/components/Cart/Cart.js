@@ -6,7 +6,7 @@ import CartContext from '../Store/CartContext';
 export default function Cart(props) {
 
   const cartCtx = useContext(CartContext)
-  const totalAmount = `$${cartCtx.totalAmount.toFixed(2)}`
+  const totalAmount = ` INR ${cartCtx.totalAmount.toFixed(2)}`
 
   //    const cartElements = [{
 
@@ -50,8 +50,8 @@ export default function Cart(props) {
   // ]
 
   
-
-        const tableData = cartCtx.items.map((item,index)=>(<tr><td>{index+1}</td><td>{item.title}</td><td>{item.price}</td><td>{item.quantity}</td></tr>))
+        console.log("cartctx items>",cartCtx.items)
+        const tableData = cartCtx.items.map((item,index)=>(<tr><td>{index+1}</td><td>{item.item}</td><td>{item.price}</td><td>{item.amount}</td></tr>))
 
   return (
     <Modal onClose={props.onClose}>

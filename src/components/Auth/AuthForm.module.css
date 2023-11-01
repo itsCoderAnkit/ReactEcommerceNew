@@ -1,0 +1,8 @@
+.Container{
+    margin:75px
+}
+
+.Container h1 {
+    display: flex;
+    justify-content: center
+}

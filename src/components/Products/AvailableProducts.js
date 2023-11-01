@@ -57,9 +57,10 @@ export default function AvailableProducts() {
 
   ]
 
-  const addToCartHandler = (product) => {
-    console.log("ADDING ITEM TO CART FROM AVAILABLE PRODUCTS", product)
+  const addToCartHandler = (product,index) => {
+    console.log("ADDING ITEM TO CART FROM AVAILABLE PRODUCTS", product,index)
     cartCtx.addItem({
+      id:index,
       item: product.title,
       amount: 1,
       price: product.price,
@@ -77,7 +78,7 @@ export default function AvailableProducts() {
             <Card.Text>
               {prod.price}
             </Card.Text>
-            <Button variant="primary" onClick={() => addToCartHandler(prod)}>Buy Now</Button>
+            <Button variant="primary" onClick={() => addToCartHandler(prod,index)}>Buy Now</Button>
           </Card.Body>
         </Card>
       </Col>
