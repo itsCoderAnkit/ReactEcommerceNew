@@ -9,6 +9,7 @@ import Footer from './components/Layout/Footer/Footer';
 import AvailableProducts from './components/Products/AvailableProducts';
 import CartProvider from './components/Store/CartProvider';
 import ContactUs from './components/Layout/Header/NavLinks/ContactUs';
+import ProductDetails from './components/Layout/Header/NavLinks/ProductDetails';
 
 
 
@@ -60,6 +61,9 @@ function App() {
           </Route>
           <Route path='/store' exact>
             <AvailableProducts />
+          </Route>
+          <Route path='/productDetails/:productId' exact>
+            <ProductDetails/>
           </Route>
         </Switch>
       </main>
