@@ -1,4 +1,4 @@
-import React, { useContext, useRef, useState } from 'react'
+import React, { useContext, useRef } from 'react'
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min'
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -13,8 +13,6 @@ function AuthForm() {
     const passwordInputRef = useRef()
 
     const authCtx = useContext(AuthContext)
-
-    const [isLogin,setIsLogin] = useState(true)
     
     const submitHandler= (event)=>{
         event.preventDefault()
@@ -34,23 +32,28 @@ function AuthForm() {
             }
         }).then(response=>{
             if(response.ok){
+                console.log("login api run", response)
                 return response.json()
             }
             else{
                 return response.json().then((data)=>{
-                    let errorMessage='Authentication Failed'
-                    throw new Error(errorMessage)
+                    // let errorMessage='Authentication Failed'
+                    // throw new Error(errorMessage)
+                    console.log(data)
                 })
             }
         }).then((data)=>{
+            console.log(data)
+            localStorage.setItem('email',data.email)
+            localStorage.setItem('token',data.idToken)
+            authCtx.isLoggedIn=true
             authCtx.login(data.idToken)
-            history.replace('/')
+            history.replace('/store')
         })
         .catch((err)=>{
-            alert(err.message)
+            console.log(err)
+            //alert(err.message)
         })
-        
-    
     }
 
   return (

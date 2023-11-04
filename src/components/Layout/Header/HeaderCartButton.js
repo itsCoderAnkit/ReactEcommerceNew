@@ -2,14 +2,10 @@ import React,{useContext} from 'react'
 import styles from './HeaderCartButton.module.css'
 import CartContext from '../../Store/CartContext'
 
-
-
-
-
 export default function HeaderCartButton(props) {
 
     const cartCtx = useContext(CartContext)
-console.log("cartCtx from header cart button", cartCtx )
+console.log("cartCtx from header cart buttons", cartCtx )
 const {items} = cartCtx
 
 const numberOfCartItems = items.reduce((curNumber,item)=>{

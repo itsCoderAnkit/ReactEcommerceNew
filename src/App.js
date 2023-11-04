@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react';
 import './App.css';
-import { Route, Switch,Redirect } from 'react-router-dom'
+import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './components/Layout/Header/Header';
 import About from './components/Layout/Header/NavLinks/About';
 import Home from './components/Layout/Header/NavLinks/Home';
@@ -12,6 +12,7 @@ import ContactUs from './components/Layout/Header/NavLinks/ContactUs';
 import ProductDetails from './components/Layout/Header/NavLinks/ProductDetails';
 import AuthForm from './components/Auth/AuthForm';
 import AuthContext from './components/Store/AuthContext';
+import Logout from './components/Auth/Logout';
 
 
 
@@ -44,7 +45,8 @@ function App() {
     console.log(responseData)
   }
 
-const authCtx = useContext(AuthContext)
+  const authCtx = useContext(AuthContext)
+  //console.log(authCtx)
   return (
 
     <CartProvider>
@@ -53,7 +55,7 @@ const authCtx = useContext(AuthContext)
       <Header showCart={handleShowCart}></Header>
       <main>
         <Switch>
-          <Route path='/' exact >
+          <Route path='/home' exact >
             <Home />
           </Route>
           <Route path='/about' exact>
@@ -62,16 +64,24 @@ const authCtx = useContext(AuthContext)
           <Route path='/contact' exact>
             <ContactUs userDetails={storeUserDetails} />
           </Route>
+          
           <Route path='/store' exact>
-            {/* {authCtx.isLoggedIn && < AvailableProducts />}
-            {!authCtx.isLoggedIn && < Redirect to="auth-form"/>} */}
-            < AvailableProducts />
+            {console.log(authCtx)}
+            {authCtx.isLoggedIn && < AvailableProducts />}
+            {!authCtx.isLoggedIn && < Redirect to="/auth-form" />}
+            
           </Route>
           <Route path='/auth-form' exact>
             <AuthForm />
           </Route>
+          <Route path='/logout' exact>
+            <Logout />
+          </Route>
           <Route path='/productDetails/:productId' exact>
-            <ProductDetails/>
+            <ProductDetails />
+          </Route>
+          <Route path='*'>
+            <Redirect to='/home' />
           </Route>
         </Switch>
       </main>

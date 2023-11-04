@@ -53,3 +53,7 @@ nav ul li a {
   text-decoration: none; /* Remove underline from links */
   color: white; /* Set link color to white */
 }
+
+.navbar p{
+  margin: 5px 0 5px 33px;
+}

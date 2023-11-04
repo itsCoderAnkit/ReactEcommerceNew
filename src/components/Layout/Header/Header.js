@@ -13,12 +13,20 @@ export default function Header(props) {
       <header>
         <Navbar bg="dark" data-bs-theme="dark" className={styles.navbar}>
           <Container >
-            <Navbar.Brand href="/">My E-com Store</Navbar.Brand>
-          
+            <Navbar.Brand href="/home">My E-com Store</Navbar.Brand>
+            
             <nav>
               <ul>
                 <li>
-                  <NavLink activeClassName={styles.active} to="/">Home</NavLink>
+                  <NavLink activeClassName={styles.active} to="/home">Home</NavLink>
+                  {/* <NavLink className={(isActive,isPending)=>{
+                    if(isPending=='pending'){
+                      return 'pending'
+                    }
+                    else{
+                      return 'active'
+                    }
+                  }} to="/">Home</NavLink> */}
                 </li>
                 <li>
                   <NavLink activeClassName={styles.active} to="/store">Store</NavLink>
@@ -32,11 +40,16 @@ export default function Header(props) {
                 <li>
                   <NavLink activeClassName={styles.active} to="/auth-form">Login</NavLink>
                 </li>
+                <li>
+                  <NavLink activeClassName={styles.active} to="/logout">Logout</NavLink>
+                </li>
               </ul>
             </nav>
 
             <HeaderCartButton showCart={props.showCart}></HeaderCartButton>
+            
           </Container>
+        
         </Navbar>
       </header>
       <div className={styles.headerBackground}>
