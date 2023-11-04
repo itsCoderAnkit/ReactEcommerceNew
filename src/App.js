@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react';
+import React, { Suspense, useContext, useState } from 'react';
 import './App.css';
 import { Route, Switch, Redirect } from 'react-router-dom'
 import Header from './components/Layout/Header/Header';
@@ -8,11 +8,14 @@ import Cart from './components/Cart/Cart';
 import Footer from './components/Layout/Footer/Footer';
 import AvailableProducts from './components/Products/AvailableProducts';
 import CartProvider from './components/Store/CartProvider';
-import ContactUs from './components/Layout/Header/NavLinks/ContactUs';
+//import ContactUs from './components/Layout/Header/NavLinks/ContactUs';
 import ProductDetails from './components/Layout/Header/NavLinks/ProductDetails';
 import AuthForm from './components/Auth/AuthForm';
 import AuthContext from './components/Store/AuthContext';
 import Logout from './components/Auth/Logout';
+
+
+const ContactUs = React.lazy(()=>import('./components/Layout/Header/NavLinks/ContactUs'))
 
 
 
@@ -54,6 +57,8 @@ function App() {
       {showCart && <Cart onClose={handleHideCart} />}
       <Header showCart={handleShowCart}></Header>
       <main>
+       
+          <Suspense fallback={<p>LOADING....</p>}>
         <Switch>
           <Route path='/home' exact >
             <Home />
@@ -84,6 +89,8 @@ function App() {
             <Redirect to='/home' />
           </Route>
         </Switch>
+        </Suspense>
+        
       </main>
       <Footer></Footer>
     </CartProvider>
